@@ -1,0 +1,92 @@
+[p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PICREGULAR PICMID ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F877A ]
+[d frameptr 0 ]
+"5 E:\MPLAB COMPILER\pic\sources\c90\common\__lldiv.c
+[v ___lldiv __lldiv `(ul  1 e 4 0 ]
+"10 E:\MPLAB COMPILER\pic\sources\c90\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"4 E:\MPLAB COMPILER\pic\sources\c90\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"6 E:\MPLAB COMPILER\pic\sources\c90\pic\__eeprom.c
+[v ___eecpymem __eecpymem `(v  1 e 1 0 ]
+"39
+[v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"17 G:\MPLABXProjects\USART_Bluetooth.X\LCD.c
+[v _Lcd_CmdWrite Lcd_CmdWrite `(v  1 e 1 0 ]
+"149 G:\MPLABXProjects\USART_Bluetooth.X\newmain.c
+[v _main main `(v  1 e 1 0 ]
+"11 G:\MPLABXProjects\USART_Bluetooth.X\UART.c
+[v _UART_Init UART_Init `(v  1 e 1 0 ]
+"20
+[v _UART_TxChar UART_TxChar `(v  1 e 1 0 ]
+"45
+[v _UART_RxChar UART_RxChar `(uc  1 e 1 0 ]
+"216 E:/MPLAB INSTALLATION/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f877a.h
+[v _PORTB PORTB `VEuc  1 e 1 @6 ]
+"340
+[v _PORTD PORTD `VEuc  1 e 1 @8 ]
+"964
+[v _RCSTA RCSTA `VEuc  1 e 1 @24 ]
+"1059
+[v _TXREG TXREG `VEuc  1 e 1 @25 ]
+"1066
+[v _RCREG RCREG `VEuc  1 e 1 @26 ]
+"1375
+[v _TRISB TRISB `VEuc  1 e 1 @134 ]
+"1437
+[v _TRISC TRISC `VEuc  1 e 1 @135 ]
+"1499
+[v _TRISD TRISD `VEuc  1 e 1 @136 ]
+"1999
+[v _TXSTA TXSTA `VEuc  1 e 1 @152 ]
+"2080
+[v _SPBRG SPBRG `VEuc  1 e 1 @153 ]
+"2695
+[v _RB7 RB7 `VEb  1 e 0 @55 ]
+"2743
+[v _RCIF RCIF `VEb  1 e 0 @101 ]
+"2956
+[v _TRISB7 TRISB7 `VEb  1 e 0 @1079 ]
+"3016
+[v _TRMT TRMT `VEb  1 e 0 @1217 ]
+"3037
+[v _TXIF TXIF `VEb  1 e 0 @100 ]
+"149 G:\MPLABXProjects\USART_Bluetooth.X\newmain.c
+[v _main main `(v  1 e 1 0 ]
+{
+"174
+} 0
+"45 G:\MPLABXProjects\USART_Bluetooth.X\UART.c
+[v _UART_RxChar UART_RxChar `(uc  1 e 1 0 ]
+{
+"50
+} 0
+"11
+[v _UART_Init UART_Init `(v  1 e 1 0 ]
+{
+[v UART_Init@baudRate baudRate `i  1 p 2 0 ]
+"17
+} 0
+"5 E:\MPLAB COMPILER\pic\sources\c90\common\__lldiv.c
+[v ___lldiv __lldiv `(ul  1 e 4 0 ]
+{
+"10
+[v ___lldiv@quotient quotient `ul  1 a 4 9 ]
+"11
+[v ___lldiv@counter counter `uc  1 a 1 13 ]
+"5
+[v ___lldiv@divisor divisor `ul  1 p 4 0 ]
+[v ___lldiv@dividend dividend `ul  1 p 4 4 ]
+"30
+} 0
+"17 G:\MPLABXProjects\USART_Bluetooth.X\LCD.c
+[v _Lcd_CmdWrite Lcd_CmdWrite `(v  1 e 1 0 ]
+{
+[v Lcd_CmdWrite@cmd cmd `uc  1 a 1 wreg ]
+[v Lcd_CmdWrite@cmd cmd `uc  1 a 1 wreg ]
+"19
+[v Lcd_CmdWrite@cmd cmd `uc  1 a 1 2 ]
+"27
+} 0
