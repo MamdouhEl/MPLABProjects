@@ -1,0 +1,1025 @@
+
+
+Microchip MPLAB XC8 Assembler V2.32 build 20210201212658 
+                                                                                               Mon Nov 08 01:20:27 2021
+
+Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1 
+     1                           	processor	16F877A
+     2                           	pagewidth 120
+     3                           	opt	flic
+     4                           	psect	idataBANK0,global,class=CODE,delta=2,noexec
+     5                           	psect	cinit,global,class=CODE,merge=1,delta=2
+     6                           	psect	dataBANK0,global,class=BANK0,space=1,delta=1,noexec
+     7                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1,noexec
+     8                           	psect	cstackBANK0,global,class=BANK0,space=1,delta=1,noexec
+     9                           	psect	maintext,global,class=CODE,split=1,delta=2
+    10                           	psect	text1,local,class=CODE,merge=1,delta=2
+    11                           	psect	text2,local,class=CODE,merge=1,delta=2
+    12                           	psect	text3,local,class=CODE,merge=1,delta=2
+    13                           	psect	text4,local,class=CODE,merge=1,delta=2,group=1
+    14                           	psect	config,global,abs,ovrld,class=CONFIG,space=4,delta=2,noexec
+    15                           	dabs	1,0x7E,2
+    16  0000                     
+    17                           ; Version 2.20
+    18                           ; Generated 12/02/2020 GMT
+    19                           ; 
+    20                           ; Copyright © 2020, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    21                           ; All rights reserved.
+    22                           ; 
+    23                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    24                           ; 
+    25                           ; Redistribution and use in source and binary forms, with or without modification, are
+    26                           ; permitted provided that the following conditions are met:
+    27                           ; 
+    28                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    29                           ;        conditions and the following disclaimer.
+    30                           ; 
+    31                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    32                           ;        of conditions and the following disclaimer in the documentation and/or other
+    33                           ;        materials provided with the distribution.
+    34                           ; 
+    35                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    36                           ;        software without specific prior written permission.
+    37                           ; 
+    38                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    39                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    40                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    41                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    42                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    43                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    44                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    45                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    46                           ; 
+    47                           ; 
+    48                           ; Code-generator required, PIC16F877A Definitions
+    49                           ; 
+    50                           ; SFR Addresses
+    51  0000                     	;# 
+    52  0001                     	;# 
+    53  0002                     	;# 
+    54  0003                     	;# 
+    55  0004                     	;# 
+    56  0005                     	;# 
+    57  0006                     	;# 
+    58  0007                     	;# 
+    59  0008                     	;# 
+    60  0009                     	;# 
+    61  000A                     	;# 
+    62  000B                     	;# 
+    63  000C                     	;# 
+    64  000D                     	;# 
+    65  000E                     	;# 
+    66  000E                     	;# 
+    67  000F                     	;# 
+    68  0010                     	;# 
+    69  0011                     	;# 
+    70  0012                     	;# 
+    71  0013                     	;# 
+    72  0014                     	;# 
+    73  0015                     	;# 
+    74  0015                     	;# 
+    75  0016                     	;# 
+    76  0017                     	;# 
+    77  0018                     	;# 
+    78  0019                     	;# 
+    79  001A                     	;# 
+    80  001B                     	;# 
+    81  001B                     	;# 
+    82  001C                     	;# 
+    83  001D                     	;# 
+    84  001E                     	;# 
+    85  001F                     	;# 
+    86  0081                     	;# 
+    87  0085                     	;# 
+    88  0086                     	;# 
+    89  0087                     	;# 
+    90  0088                     	;# 
+    91  0089                     	;# 
+    92  008C                     	;# 
+    93  008D                     	;# 
+    94  008E                     	;# 
+    95  0091                     	;# 
+    96  0092                     	;# 
+    97  0093                     	;# 
+    98  0094                     	;# 
+    99  0098                     	;# 
+   100  0099                     	;# 
+   101  009C                     	;# 
+   102  009D                     	;# 
+   103  009E                     	;# 
+   104  009F                     	;# 
+   105  010C                     	;# 
+   106  010D                     	;# 
+   107  010E                     	;# 
+   108  010F                     	;# 
+   109  018C                     	;# 
+   110  018D                     	;# 
+   111  0000                     	;# 
+   112  0001                     	;# 
+   113  0002                     	;# 
+   114  0003                     	;# 
+   115  0004                     	;# 
+   116  0005                     	;# 
+   117  0006                     	;# 
+   118  0007                     	;# 
+   119  0008                     	;# 
+   120  0009                     	;# 
+   121  000A                     	;# 
+   122  000B                     	;# 
+   123  000C                     	;# 
+   124  000D                     	;# 
+   125  000E                     	;# 
+   126  000E                     	;# 
+   127  000F                     	;# 
+   128  0010                     	;# 
+   129  0011                     	;# 
+   130  0012                     	;# 
+   131  0013                     	;# 
+   132  0014                     	;# 
+   133  0015                     	;# 
+   134  0015                     	;# 
+   135  0016                     	;# 
+   136  0017                     	;# 
+   137  0018                     	;# 
+   138  0019                     	;# 
+   139  001A                     	;# 
+   140  001B                     	;# 
+   141  001B                     	;# 
+   142  001C                     	;# 
+   143  001D                     	;# 
+   144  001E                     	;# 
+   145  001F                     	;# 
+   146  0081                     	;# 
+   147  0085                     	;# 
+   148  0086                     	;# 
+   149  0087                     	;# 
+   150  0088                     	;# 
+   151  0089                     	;# 
+   152  008C                     	;# 
+   153  008D                     	;# 
+   154  008E                     	;# 
+   155  0091                     	;# 
+   156  0092                     	;# 
+   157  0093                     	;# 
+   158  0094                     	;# 
+   159  0098                     	;# 
+   160  0099                     	;# 
+   161  009C                     	;# 
+   162  009D                     	;# 
+   163  009E                     	;# 
+   164  009F                     	;# 
+   165  010C                     	;# 
+   166  010D                     	;# 
+   167  010E                     	;# 
+   168  010F                     	;# 
+   169  018C                     	;# 
+   170  018D                     	;# 
+   171                           
+   172                           	psect	idataBANK0
+   173  06E2                     __pidataBANK0:
+   174                           
+   175                           ;initializer for main@F860
+   176  06E2  3441               	retlw	65
+   177  06E3  3454               	retlw	84
+   178  06E4  3400               	retlw	0
+   179  001A                     _RCREG	set	26
+   180  0019                     _TXREG	set	25
+   181  0018                     _RCSTA	set	24
+   182  0065                     _RCIF	set	101
+   183  0064                     _TXIF	set	100
+   184  0099                     _SPBRG	set	153
+   185  0098                     _TXSTA	set	152
+   186  0087                     _TRISC	set	135
+   187  04C1                     _TRMT	set	1217
+   188                           
+   189                           	psect	cinit
+   190  07EA                     start_initialization:	
+   191                           ; #config settings
+   192                           
+   193  07EA                     __initialization:
+   194                           
+   195                           ; Initialize objects allocated to BANK0
+   196  07EA  120A  118A  26E2  120A  118A  	fcall	__pidataBANK0	;fetch initializer
+   197  07EF  00AC               	movwf	__pdataBANK0& (0+127)
+   198  07F0  120A  118A  26E3  120A  118A  	fcall	__pidataBANK0+1	;fetch initializer
+   199  07F5  00AD               	movwf	(__pdataBANK0+1)& (0+127)
+   200  07F6  120A  118A  26E4  120A  118A  	fcall	__pidataBANK0+2	;fetch initializer
+   201  07FB  00AE               	movwf	(__pdataBANK0+2)& (0+127)
+   202  07FC                     end_of_initialization:	
+   203                           ;End of C runtime variable initialization code
+   204                           
+   205  07FC                     __end_of__initialization:
+   206  07FC  0183               	clrf	3
+   207  07FD  120A  118A  2F43   	ljmp	_main	;jump to C main() function
+   208                           
+   209                           	psect	dataBANK0
+   210  002C                     __pdataBANK0:
+   211  002C                     main@F860:
+   212  002C                     	ds	3
+   213                           
+   214                           	psect	cstackCOMMON
+   215  0070                     __pcstackCOMMON:
+   216  0070                     ?_UART_TxChar:
+   217  0070                     ??_UART_TxChar:	
+   218                           ; 1 bytes @ 0x0
+   219                           
+   220  0070                     ?_UART_RxChar:	
+   221                           ; 1 bytes @ 0x0
+   222                           
+   223  0070                     ??_UART_RxChar:	
+   224                           ; 1 bytes @ 0x0
+   225                           
+   226  0070                     ?_main:	
+   227                           ; 1 bytes @ 0x0
+   228                           
+   229  0070                     ?___lldiv:	
+   230                           ; 2 bytes @ 0x0
+   231                           
+   232  0070                     UART_TxChar@ch:	
+   233                           ; 4 bytes @ 0x0
+   234                           
+   235  0070                     ___lldiv@divisor:	
+   236                           ; 1 bytes @ 0x0
+   237                           
+   238                           
+   239                           ; 4 bytes @ 0x0
+   240  0070                     	ds	4
+   241  0074                     ___lldiv@dividend:
+   242                           
+   243                           ; 4 bytes @ 0x4
+   244  0074                     	ds	4
+   245  0078                     ??___lldiv:
+   246                           
+   247                           ; 1 bytes @ 0x8
+   248  0078                     	ds	1
+   249  0079                     ___lldiv@quotient:
+   250                           
+   251                           ; 4 bytes @ 0x9
+   252  0079                     	ds	4
+   253  007D                     ___lldiv@counter:
+   254                           
+   255                           ; 1 bytes @ 0xD
+   256  007D                     	ds	1
+   257                           
+   258                           	psect	cstackBANK0
+   259  0020                     __pcstackBANK0:
+   260  0020                     ?_UART_Init:
+   261  0020                     UART_Init@baudRate:	
+   262                           ; 1 bytes @ 0x0
+   263                           
+   264                           
+   265                           ; 2 bytes @ 0x0
+   266  0020                     	ds	2
+   267  0022                     ??_UART_Init:
+   268                           
+   269                           ; 1 bytes @ 0x2
+   270  0022                     	ds	4
+   271  0026                     ??_main:
+   272                           
+   273                           ; 1 bytes @ 0x6
+   274  0026                     	ds	1
+   275  0027                     main@a:
+   276                           
+   277                           ; 3 bytes @ 0x7
+   278  0027                     	ds	3
+   279  002A                     main@ch:
+   280                           
+   281                           ; 1 bytes @ 0xA
+   282  002A                     	ds	1
+   283  002B                     main@i:
+   284                           
+   285                           ; 1 bytes @ 0xB
+   286  002B                     	ds	1
+   287                           
+   288                           	psect	maintext
+   289  0743                     __pmaintext:	
+   290 ;;
+   291 ;;Main: autosize = 0, tempsize = 1, incstack = 0, save=0
+   292 ;;
+   293 ;; *************** function _main *****************
+   294 ;; Defined at:
+   295 ;;		line 74 in file "newmain.c"
+   296 ;; Parameters:    Size  Location     Type
+   297 ;;		None
+   298 ;; Auto vars:     Size  Location     Type
+   299 ;;  a               3    7[BANK0 ] unsigned char [3]
+   300 ;;  i               1   11[BANK0 ] unsigned char 
+   301 ;;  ch              1   10[BANK0 ] unsigned char 
+   302 ;; Return value:  Size  Location     Type
+   303 ;;                  2   45[None  ] int 
+   304 ;; Registers used:
+   305 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+   306 ;; Tracked objects:
+   307 ;;		On entry : B00/0
+   308 ;;		On exit  : 0/0
+   309 ;;		Unchanged: 0/0
+   310 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   311 ;;      Params:         0       0       0       0       0
+   312 ;;      Locals:         0       5       0       0       0
+   313 ;;      Temps:          0       1       0       0       0
+   314 ;;      Totals:         0       6       0       0       0
+   315 ;;Total ram usage:        6 bytes
+   316 ;; Hardware stack levels required when called: 2
+   317 ;; This function calls:
+   318 ;;		_UART_Init
+   319 ;;		_UART_RxChar
+   320 ;;		_UART_TxChar
+   321 ;; This function is called by:
+   322 ;;		Startup code after reset
+   323 ;; This function uses a non-reentrant model
+   324 ;;
+   325                           
+   326                           
+   327                           ;psect for function _main
+   328  0743                     _main:
+   329  0743                     l770:	
+   330                           ;incstack = 0
+   331                           ; Regs used in _main: [wreg-fsr0h+status,2+status,0+pclath+cstack]
+   332                           
+   333                           
+   334                           ;newmain.c: 76:     char i,a[]={"AT"};
+   335  0743  1283               	bcf	3,5	;RP0=0, select bank0
+   336  0744  1303               	bcf	3,6	;RP1=0, select bank0
+   337  0745  082C               	movf	main@F860,w
+   338  0746  00A7               	movwf	main@a
+   339  0747  082D               	movf	main@F860+1,w
+   340  0748  00A8               	movwf	main@a+1
+   341  0749  082E               	movf	main@F860+2,w
+   342  074A  00A9               	movwf	main@a+2
+   343  074B                     l772:
+   344                           
+   345                           ;newmain.c: 77:     char ch;;newmain.c: 79:     UART_Init(38400);
+   346  074B  3000               	movlw	0
+   347  074C  00A0               	movwf	UART_Init@baudRate
+   348  074D  3096               	movlw	150
+   349  074E  00A1               	movwf	UART_Init@baudRate+1
+   350  074F  120A  118A  270D  120A  118A  	fcall	_UART_Init
+   351  0754                     l774:
+   352                           
+   353                           ;newmain.c: 80:     for(i=0;a[i]!=0;i++)
+   354  0754  1283               	bcf	3,5	;RP0=0, select bank0
+   355  0755  1303               	bcf	3,6	;RP1=0, select bank0
+   356  0756  01AB               	clrf	main@i
+   357  0757  2F67               	goto	l780
+   358  0758                     l776:
+   359                           
+   360                           ;newmain.c: 81:     {;newmain.c: 82:         UART_TxChar(a[i]);
+   361  0758  082B               	movf	main@i,w
+   362  0759  3E27               	addlw	(low (main@a| 0))& (0+255)
+   363  075A  0084               	movwf	4
+   364  075B  0800               	movf	0,w
+   365  075C  120A  118A  26EE  120A  118A  	fcall	_UART_TxChar
+   366  0761                     l778:
+   367                           
+   368                           ;newmain.c: 83:     }
+   369  0761  3001               	movlw	1
+   370  0762  1283               	bcf	3,5	;RP0=0, select bank0
+   371  0763  1303               	bcf	3,6	;RP1=0, select bank0
+   372  0764  00A6               	movwf	??_main
+   373  0765  0826               	movf	??_main,w
+   374  0766  07AB               	addwf	main@i,f
+   375  0767                     l780:
+   376  0767  082B               	movf	main@i,w
+   377  0768  3E27               	addlw	(low (main@a| 0))& (0+255)
+   378  0769  0084               	movwf	4
+   379  076A  1383               	bcf	3,7	;select IRP bank0
+   380  076B  0800               	movf	0,w
+   381  076C  1D03               	btfss	3,2
+   382  076D  2F6F               	goto	u281
+   383  076E  2F70               	goto	u280
+   384  076F                     u281:
+   385  076F  2F58               	goto	l776
+   386  0770                     u280:
+   387  0770                     l782:
+   388                           
+   389                           ;newmain.c: 86:     {;newmain.c: 87:         ch = UART_RxChar();
+   390  0770  120A  118A  26E5  120A  118A  	fcall	_UART_RxChar
+   391  0775  1283               	bcf	3,5	;RP0=0, select bank0
+   392  0776  1303               	bcf	3,6	;RP1=0, select bank0
+   393  0777  00A6               	movwf	??_main
+   394  0778  0826               	movf	??_main,w
+   395  0779  00AA               	movwf	main@ch
+   396  077A                     l784:
+   397                           
+   398                           ;newmain.c: 88:         UART_TxChar(ch);
+   399  077A  082A               	movf	main@ch,w
+   400  077B  120A  118A  26EE  120A  118A  	fcall	_UART_TxChar
+   401  0780  2F70               	goto	l782
+   402  0781  120A  118A  2800   	ljmp	start
+   403  0784                     __end_of_main:
+   404                           
+   405                           	psect	text1
+   406  06EE                     __ptext1:	
+   407 ;; *************** function _UART_TxChar *****************
+   408 ;; Defined at:
+   409 ;;		line 43 in file "newmain.c"
+   410 ;; Parameters:    Size  Location     Type
+   411 ;;  ch              1    wreg     unsigned char 
+   412 ;; Auto vars:     Size  Location     Type
+   413 ;;  ch              1    0[COMMON] unsigned char 
+   414 ;; Return value:  Size  Location     Type
+   415 ;;                  1    wreg      void 
+   416 ;; Registers used:
+   417 ;;		wreg
+   418 ;; Tracked objects:
+   419 ;;		On entry : 0/0
+   420 ;;		On exit  : 0/0
+   421 ;;		Unchanged: 0/0
+   422 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   423 ;;      Params:         0       0       0       0       0
+   424 ;;      Locals:         1       0       0       0       0
+   425 ;;      Temps:          0       0       0       0       0
+   426 ;;      Totals:         1       0       0       0       0
+   427 ;;Total ram usage:        1 bytes
+   428 ;; Hardware stack levels used: 1
+   429 ;; This function calls:
+   430 ;;		Nothing
+   431 ;; This function is called by:
+   432 ;;		_main
+   433 ;;		_UART_TxString
+   434 ;; This function uses a non-reentrant model
+   435 ;;
+   436                           
+   437                           
+   438                           ;psect for function _UART_TxChar
+   439  06EE                     _UART_TxChar:
+   440                           
+   441                           ;incstack = 0
+   442                           ; Regs used in _UART_TxChar: [wreg]
+   443                           ;UART_TxChar@ch stored from wreg
+   444  06EE  00F0               	movwf	UART_TxChar@ch
+   445  06EF                     l744:
+   446  06EF                     l24:	
+   447                           ;newmain.c: 43: void UART_TxChar(char ch);newmain.c: 44: {;newmain.c: 45:     while(TXIF
+      +                          ==0);
+   448                           
+   449  06EF  1283               	bcf	3,5	;RP0=0, select bank0
+   450  06F0  1303               	bcf	3,6	;RP1=0, select bank0
+   451  06F1  1E0C               	btfss	12,4	;volatile
+   452  06F2  2EF4               	goto	u231
+   453  06F3  2EF5               	goto	u230
+   454  06F4                     u231:
+   455  06F4  2EEF               	goto	l24
+   456  06F5                     u230:
+   457  06F5                     l26:
+   458                           
+   459                           ;newmain.c: 46:     TXIF=0;
+   460  06F5  120C               	bcf	12,4	;volatile
+   461  06F6                     l746:
+   462                           
+   463                           ;newmain.c: 47:     TXREG=ch;
+   464  06F6  0870               	movf	UART_TxChar@ch,w
+   465  06F7  0099               	movwf	25	;volatile
+   466  06F8                     l748:
+   467                           
+   468                           ;newmain.c: 48:     if(TRMT == 1){
+   469  06F8  1683               	bsf	3,5	;RP0=1, select bank1
+   470  06F9  1303               	bcf	3,6	;RP1=0, select bank1
+   471  06FA  1C98               	btfss	24,1	;volatile
+   472  06FB  2EFD               	goto	u241
+   473  06FC  2EFE               	goto	u240
+   474  06FD                     u241:
+   475  06FD  2F02               	goto	l752
+   476  06FE                     u240:
+   477  06FE                     l750:
+   478                           
+   479                           ;newmain.c: 50:         TXREG='\n';
+   480  06FE  300A               	movlw	10
+   481  06FF  1283               	bcf	3,5	;RP0=0, select bank0
+   482  0700  1303               	bcf	3,6	;RP1=0, select bank0
+   483  0701  0099               	movwf	25	;volatile
+   484  0702                     l752:
+   485                           
+   486                           ;newmain.c: 53:     if(TRMT == 1){
+   487  0702  1683               	bsf	3,5	;RP0=1, select bank1
+   488  0703  1303               	bcf	3,6	;RP1=0, select bank1
+   489  0704  1C98               	btfss	24,1	;volatile
+   490  0705  2F07               	goto	u251
+   491  0706  2F08               	goto	u250
+   492  0707                     u251:
+   493  0707  2F0C               	goto	l29
+   494  0708                     u250:
+   495  0708                     l754:
+   496                           
+   497                           ;newmain.c: 55:         TXREG='\r';
+   498  0708  300D               	movlw	13
+   499  0709  1283               	bcf	3,5	;RP0=0, select bank0
+   500  070A  1303               	bcf	3,6	;RP1=0, select bank0
+   501  070B  0099               	movwf	25	;volatile
+   502  070C                     l29:
+   503  070C  0008               	return
+   504  070D                     __end_of_UART_TxChar:
+   505                           
+   506                           	psect	text2
+   507  06E5                     __ptext2:	
+   508 ;; *************** function _UART_RxChar *****************
+   509 ;; Defined at:
+   510 ;;		line 68 in file "newmain.c"
+   511 ;; Parameters:    Size  Location     Type
+   512 ;;		None
+   513 ;; Auto vars:     Size  Location     Type
+   514 ;;		None
+   515 ;; Return value:  Size  Location     Type
+   516 ;;                  1    wreg      unsigned char 
+   517 ;; Registers used:
+   518 ;;		wreg
+   519 ;; Tracked objects:
+   520 ;;		On entry : 0/0
+   521 ;;		On exit  : 0/0
+   522 ;;		Unchanged: 0/0
+   523 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   524 ;;      Params:         0       0       0       0       0
+   525 ;;      Locals:         0       0       0       0       0
+   526 ;;      Temps:          0       0       0       0       0
+   527 ;;      Totals:         0       0       0       0       0
+   528 ;;Total ram usage:        0 bytes
+   529 ;; Hardware stack levels used: 1
+   530 ;; This function calls:
+   531 ;;		Nothing
+   532 ;; This function is called by:
+   533 ;;		_main
+   534 ;; This function uses a non-reentrant model
+   535 ;;
+   536                           
+   537                           
+   538                           ;psect for function _UART_RxChar
+   539  06E5                     _UART_RxChar:
+   540  06E5                     l756:	
+   541                           ;incstack = 0
+   542                           ; Regs used in _UART_RxChar: [wreg]
+   543                           
+   544  06E5                     l38:	
+   545                           ;newmain.c: 70:     while(RCIF==0);
+   546                           
+   547  06E5  1283               	bcf	3,5	;RP0=0, select bank0
+   548  06E6  1303               	bcf	3,6	;RP1=0, select bank0
+   549  06E7  1E8C               	btfss	12,5	;volatile
+   550  06E8  2EEA               	goto	u261
+   551  06E9  2EEB               	goto	u260
+   552  06EA                     u261:
+   553  06EA  2EE5               	goto	l38
+   554  06EB                     u260:
+   555  06EB                     l40:
+   556                           
+   557                           ;newmain.c: 71:     RCIF=0;
+   558  06EB  128C               	bcf	12,5	;volatile
+   559  06EC                     l758:
+   560                           
+   561                           ;newmain.c: 72:     return(RCREG);
+   562  06EC  081A               	movf	26,w	;volatile
+   563  06ED                     l41:
+   564  06ED  0008               	return
+   565  06EE                     __end_of_UART_RxChar:
+   566                           
+   567                           	psect	text3
+   568  070D                     __ptext3:	
+   569 ;; *************** function _UART_Init *****************
+   570 ;; Defined at:
+   571 ;;		line 34 in file "newmain.c"
+   572 ;; Parameters:    Size  Location     Type
+   573 ;;  baudRate        2    0[BANK0 ] int 
+   574 ;; Auto vars:     Size  Location     Type
+   575 ;;		None
+   576 ;; Return value:  Size  Location     Type
+   577 ;;                  1    wreg      void 
+   578 ;; Registers used:
+   579 ;;		wreg, status,2, status,0, pclath, cstack
+   580 ;; Tracked objects:
+   581 ;;		On entry : 0/0
+   582 ;;		On exit  : 0/0
+   583 ;;		Unchanged: 0/0
+   584 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   585 ;;      Params:         0       2       0       0       0
+   586 ;;      Locals:         0       0       0       0       0
+   587 ;;      Temps:          0       4       0       0       0
+   588 ;;      Totals:         0       6       0       0       0
+   589 ;;Total ram usage:        6 bytes
+   590 ;; Hardware stack levels used: 1
+   591 ;; Hardware stack levels required when called: 1
+   592 ;; This function calls:
+   593 ;;		___lldiv
+   594 ;; This function is called by:
+   595 ;;		_main
+   596 ;; This function uses a non-reentrant model
+   597 ;;
+   598                           
+   599                           
+   600                           ;psect for function _UART_Init
+   601  070D                     _UART_Init:
+   602  070D                     l740:	
+   603                           ;incstack = 0
+   604                           ; Regs used in _UART_Init: [wreg+status,2+status,0+pclath+cstack]
+   605                           
+   606                           
+   607                           ;newmain.c: 34: void UART_Init(int baudRate);newmain.c: 35: {;newmain.c: 36:     TRISC=0
+      +                          x80;
+   608  070D  3080               	movlw	128
+   609  070E  1683               	bsf	3,5	;RP0=1, select bank1
+   610  070F  1303               	bcf	3,6	;RP1=0, select bank1
+   611  0710  0087               	movwf	7	;volatile
+   612                           
+   613                           ;newmain.c: 37:     TXSTA=(1<<5) | (1<<2);
+   614  0711  3024               	movlw	36
+   615  0712  0098               	movwf	24	;volatile
+   616                           
+   617                           ;newmain.c: 38:     RCSTA=(1<<7) | (1<<4);
+   618  0713  3090               	movlw	144
+   619  0714  1283               	bcf	3,5	;RP0=0, select bank0
+   620  0715  1303               	bcf	3,6	;RP1=0, select bank0
+   621  0716  0098               	movwf	24	;volatile
+   622  0717                     l742:
+   623                           
+   624                           ;newmain.c: 39:     SPBRG = (20000000UL/(long)(16UL*baudRate));
+   625  0717  0820               	movf	UART_Init@baudRate,w
+   626  0718  00A2               	movwf	??_UART_Init
+   627  0719  0821               	movf	UART_Init@baudRate+1,w
+   628  071A  00A3               	movwf	??_UART_Init+1
+   629  071B  3000               	movlw	0
+   630  071C  1BA3               	btfsc	??_UART_Init+1,7
+   631  071D  30FF               	movlw	255
+   632  071E  00A4               	movwf	??_UART_Init+2
+   633  071F  00A5               	movwf	??_UART_Init+3
+   634  0720  3004               	movlw	4
+   635  0721                     u225:
+   636  0721  1003               	clrc
+   637  0722  0DA2               	rlf	??_UART_Init,f
+   638  0723  0DA3               	rlf	??_UART_Init+1,f
+   639  0724  0DA4               	rlf	??_UART_Init+2,f
+   640  0725  0DA5               	rlf	??_UART_Init+3,f
+   641  0726                     u220:
+   642  0726  3EFF               	addlw	-1
+   643  0727  1D03               	skipz
+   644  0728  2F21               	goto	u225
+   645  0729  0825               	movf	??_UART_Init+3,w
+   646  072A  00F3               	movwf	___lldiv@divisor+3
+   647  072B  0824               	movf	??_UART_Init+2,w
+   648  072C  00F2               	movwf	___lldiv@divisor+2
+   649  072D  0823               	movf	??_UART_Init+1,w
+   650  072E  00F1               	movwf	___lldiv@divisor+1
+   651  072F  0822               	movf	??_UART_Init,w
+   652  0730  00F0               	movwf	___lldiv@divisor
+   653  0731  3001               	movlw	1
+   654  0732  00F7               	movwf	___lldiv@dividend+3
+   655  0733  3031               	movlw	49
+   656  0734  00F6               	movwf	___lldiv@dividend+2
+   657  0735  302D               	movlw	45
+   658  0736  00F5               	movwf	___lldiv@dividend+1
+   659  0737  3000               	movlw	0
+   660  0738  00F4               	movwf	___lldiv@dividend
+   661  0739  120A  118A  2784  120A  118A  	fcall	___lldiv
+   662  073E  0870               	movf	?___lldiv,w
+   663  073F  1683               	bsf	3,5	;RP0=1, select bank1
+   664  0740  1303               	bcf	3,6	;RP1=0, select bank1
+   665  0741  0099               	movwf	25	;volatile
+   666  0742                     l21:
+   667  0742  0008               	return
+   668  0743                     __end_of_UART_Init:
+   669                           
+   670                           	psect	text4
+   671  0784                     __ptext4:	
+   672 ;; *************** function ___lldiv *****************
+   673 ;; Defined at:
+   674 ;;		line 5 in file "C:\Program Files\Microchip\xc8\v2.32\pic\sources\c90\common\__lldiv.c"
+   675 ;; Parameters:    Size  Location     Type
+   676 ;;  divisor         4    0[COMMON] unsigned long 
+   677 ;;  dividend        4    4[COMMON] unsigned long 
+   678 ;; Auto vars:     Size  Location     Type
+   679 ;;  quotient        4    9[COMMON] unsigned long 
+   680 ;;  counter         1   13[COMMON] unsigned char 
+   681 ;; Return value:  Size  Location     Type
+   682 ;;                  4    0[COMMON] unsigned long 
+   683 ;; Registers used:
+   684 ;;		wreg, status,2, status,0
+   685 ;; Tracked objects:
+   686 ;;		On entry : 0/0
+   687 ;;		On exit  : 0/0
+   688 ;;		Unchanged: 0/0
+   689 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   690 ;;      Params:         8       0       0       0       0
+   691 ;;      Locals:         5       0       0       0       0
+   692 ;;      Temps:          1       0       0       0       0
+   693 ;;      Totals:        14       0       0       0       0
+   694 ;;Total ram usage:       14 bytes
+   695 ;; Hardware stack levels used: 1
+   696 ;; This function calls:
+   697 ;;		Nothing
+   698 ;; This function is called by:
+   699 ;;		_UART_Init
+   700 ;; This function uses a non-reentrant model
+   701 ;;
+   702                           
+   703                           
+   704                           ;psect for function ___lldiv
+   705  0784                     ___lldiv:
+   706  0784                     l716:	
+   707                           ;incstack = 0
+   708                           ; Regs used in ___lldiv: [wreg+status,2+status,0]
+   709                           
+   710  0784  3000               	movlw	0
+   711  0785  00FC               	movwf	___lldiv@quotient+3
+   712  0786  3000               	movlw	0
+   713  0787  00FB               	movwf	___lldiv@quotient+2
+   714  0788  3000               	movlw	0
+   715  0789  00FA               	movwf	___lldiv@quotient+1
+   716  078A  3000               	movlw	0
+   717  078B  00F9               	movwf	___lldiv@quotient
+   718  078C  0873               	movf	___lldiv@divisor+3,w
+   719  078D  0472               	iorwf	___lldiv@divisor+2,w
+   720  078E  0471               	iorwf	___lldiv@divisor+1,w
+   721  078F  0470               	iorwf	___lldiv@divisor,w
+   722  0790  1903               	skipnz
+   723  0791  2F93               	goto	u151
+   724  0792  2F94               	goto	u150
+   725  0793                     u151:
+   726  0793  2FE1               	goto	l736
+   727  0794                     u150:
+   728  0794                     l718:
+   729  0794  01FD               	clrf	___lldiv@counter
+   730  0795  0AFD               	incf	___lldiv@counter,f
+   731  0796  2FA4               	goto	l722
+   732  0797                     l720:
+   733  0797  3001               	movlw	1
+   734  0798  00F8               	movwf	??___lldiv
+   735  0799                     u165:
+   736  0799  1003               	clrc
+   737  079A  0DF0               	rlf	___lldiv@divisor,f
+   738  079B  0DF1               	rlf	___lldiv@divisor+1,f
+   739  079C  0DF2               	rlf	___lldiv@divisor+2,f
+   740  079D  0DF3               	rlf	___lldiv@divisor+3,f
+   741  079E  0BF8               	decfsz	??___lldiv,f
+   742  079F  2F99               	goto	u165
+   743  07A0  3001               	movlw	1
+   744  07A1  00F8               	movwf	??___lldiv
+   745  07A2  0878               	movf	??___lldiv,w
+   746  07A3  07FD               	addwf	___lldiv@counter,f
+   747  07A4                     l722:
+   748  07A4  1FF3               	btfss	___lldiv@divisor+3,7
+   749  07A5  2FA7               	goto	u171
+   750  07A6  2FA8               	goto	u170
+   751  07A7                     u171:
+   752  07A7  2F97               	goto	l720
+   753  07A8                     u170:
+   754  07A8                     l724:
+   755  07A8  3001               	movlw	1
+   756  07A9  00F8               	movwf	??___lldiv
+   757  07AA                     u185:
+   758  07AA  1003               	clrc
+   759  07AB  0DF9               	rlf	___lldiv@quotient,f
+   760  07AC  0DFA               	rlf	___lldiv@quotient+1,f
+   761  07AD  0DFB               	rlf	___lldiv@quotient+2,f
+   762  07AE  0DFC               	rlf	___lldiv@quotient+3,f
+   763  07AF  0BF8               	decfsz	??___lldiv,f
+   764  07B0  2FAA               	goto	u185
+   765  07B1                     l726:
+   766  07B1  0873               	movf	___lldiv@divisor+3,w
+   767  07B2  0277               	subwf	___lldiv@dividend+3,w
+   768  07B3  1D03               	skipz
+   769  07B4  2FBF               	goto	u195
+   770  07B5  0872               	movf	___lldiv@divisor+2,w
+   771  07B6  0276               	subwf	___lldiv@dividend+2,w
+   772  07B7  1D03               	skipz
+   773  07B8  2FBF               	goto	u195
+   774  07B9  0871               	movf	___lldiv@divisor+1,w
+   775  07BA  0275               	subwf	___lldiv@dividend+1,w
+   776  07BB  1D03               	skipz
+   777  07BC  2FBF               	goto	u195
+   778  07BD  0870               	movf	___lldiv@divisor,w
+   779  07BE  0274               	subwf	___lldiv@dividend,w
+   780  07BF                     u195:
+   781  07BF  1C03               	skipc
+   782  07C0  2FC2               	goto	u191
+   783  07C1  2FC3               	goto	u190
+   784  07C2                     u191:
+   785  07C2  2FD2               	goto	l732
+   786  07C3                     u190:
+   787  07C3                     l728:
+   788  07C3  0870               	movf	___lldiv@divisor,w
+   789  07C4  02F4               	subwf	___lldiv@dividend,f
+   790  07C5  0871               	movf	___lldiv@divisor+1,w
+   791  07C6  1C03               	skipc
+   792  07C7  0F71               	incfsz	___lldiv@divisor+1,w
+   793  07C8  02F5               	subwf	___lldiv@dividend+1,f
+   794  07C9  0872               	movf	___lldiv@divisor+2,w
+   795  07CA  1C03               	skipc
+   796  07CB  0F72               	incfsz	___lldiv@divisor+2,w
+   797  07CC  02F6               	subwf	___lldiv@dividend+2,f
+   798  07CD  0873               	movf	___lldiv@divisor+3,w
+   799  07CE  1C03               	skipc
+   800  07CF  0F73               	incfsz	___lldiv@divisor+3,w
+   801  07D0  02F7               	subwf	___lldiv@dividend+3,f
+   802  07D1                     l730:
+   803  07D1  1479               	bsf	___lldiv@quotient,0
+   804  07D2                     l732:
+   805  07D2  3001               	movlw	1
+   806  07D3                     u205:
+   807  07D3  1003               	clrc
+   808  07D4  0CF3               	rrf	___lldiv@divisor+3,f
+   809  07D5  0CF2               	rrf	___lldiv@divisor+2,f
+   810  07D6  0CF1               	rrf	___lldiv@divisor+1,f
+   811  07D7  0CF0               	rrf	___lldiv@divisor,f
+   812  07D8  3EFF               	addlw	-1
+   813  07D9  1D03               	skipz
+   814  07DA  2FD3               	goto	u205
+   815  07DB                     l734:
+   816  07DB  3001               	movlw	1
+   817  07DC  02FD               	subwf	___lldiv@counter,f
+   818  07DD  1D03               	btfss	3,2
+   819  07DE  2FE0               	goto	u211
+   820  07DF  2FE1               	goto	u210
+   821  07E0                     u211:
+   822  07E0  2FA8               	goto	l724
+   823  07E1                     u210:
+   824  07E1                     l736:
+   825  07E1  087C               	movf	___lldiv@quotient+3,w
+   826  07E2  00F3               	movwf	?___lldiv+3
+   827  07E3  087B               	movf	___lldiv@quotient+2,w
+   828  07E4  00F2               	movwf	?___lldiv+2
+   829  07E5  087A               	movf	___lldiv@quotient+1,w
+   830  07E6  00F1               	movwf	?___lldiv+1
+   831  07E7  0879               	movf	___lldiv@quotient,w
+   832  07E8  00F0               	movwf	?___lldiv
+   833  07E9                     l176:
+   834  07E9  0008               	return
+   835  07EA                     __end_of___lldiv:
+   836  007E                     btemp	set	126	;btemp
+   837  007E                     wtemp0	set	126
+   838                           
+   839                           	psect	config
+   840                           
+   841                           ;Config register CONFIG @ 0x2007
+   842                           ;	Oscillator Selection bits
+   843                           ;	FOSC = HS, HS oscillator
+   844                           ;	Watchdog Timer Enable bit
+   845                           ;	WDTE = OFF, WDT disabled
+   846                           ;	Power-up Timer Enable bit
+   847                           ;	PWRTE = OFF, PWRT disabled
+   848                           ;	Brown-out Reset Enable bit
+   849                           ;	BOREN = ON, BOR enabled
+   850                           ;	Low-Voltage (Single-Supply) In-Circuit Serial Programming Enable bit
+   851                           ;	LVP = ON, RB3/PGM pin has PGM function; low-voltage programming enabled
+   852                           ;	Data EEPROM Memory Code Protection bit
+   853                           ;	CPD = OFF, Data EEPROM code protection off
+   854                           ;	Flash Program Memory Write Enable bits
+   855                           ;	WRT = OFF, Write protection off; all program memory may be written to by EECON control
+   856                           ;	In-Circuit Debugger Mode bit
+   857                           ;	DEBUG = 0x1, unprogrammed default
+   858                           ;	Flash Program Memory Code Protection bit
+   859                           ;	CP = OFF, Code protection off
+   860  2007                     	org	8199
+   861  2007  3FFA               	dw	16378
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        3
+    BSS         0
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMMON           14     14      14
+    BANK0            80     12      15
+    BANK1            80      0       0
+    BANK3            96      0       0
+    BANK2            96      0       0
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMMON
+
+    _UART_Init->___lldiv
+
+Critical Paths under _main in BANK0
+
+    _main->_UART_Init
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 6     6      0     550
+                                              6 BANK0      6     6      0
+                          _UART_Init
+                        _UART_RxChar
+                        _UART_TxChar
+ ---------------------------------------------------------------------------------
+ (1) _UART_TxChar                                          1     1      0      22
+                                              0 COMMON     1     1      0
+ ---------------------------------------------------------------------------------
+ (1) _UART_RxChar                                          0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _UART_Init                                            6     4      2     412
+                                              0 BANK0      6     4      2
+                            ___lldiv
+ ---------------------------------------------------------------------------------
+ (2) ___lldiv                                             14     6      8     314
+                                              0 COMMON    14     6      8
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 2
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _UART_Init
+     ___lldiv
+   _UART_RxChar
+   _UART_TxChar
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BANK3               60      0       0       9        0.0%
+BITBANK3            60      0       0       8        0.0%
+SFR3                 0      0       0       4        0.0%
+BITSFR3              0      0       0       4        0.0%
+BANK2               60      0       0      11        0.0%
+BITBANK2            60      0       0      10        0.0%
+SFR2                 0      0       0       5        0.0%
+BITSFR2              0      0       0       5        0.0%
+BANK1               50      0       0       7        0.0%
+BITBANK1            50      0       0       6        0.0%
+SFR1                 0      0       0       2        0.0%
+BITSFR1              0      0       0       2        0.0%
+BANK0               50      C       F       5       18.8%
+BITBANK0            50      0       0       4        0.0%
+SFR0                 0      0       0       1        0.0%
+BITSFR0              0      0       0       1        0.0%
+COMMON               E      E       E       1      100.0%
+BITCOMMON            E      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+DATA                 0      0      1D      12        0.0%
+ABS                  0      0      1D       3        0.0%
+NULL                 0      0       0       0        0.0%
+STACK                0      0       0       2        0.0%
+EEDATA             100      0       0       0        0.0%
+
+
+Microchip Technology PIC Macro Assembler V2.32 build 20210201212658 
+Symbol Table                                                                                   Mon Nov 08 01:20:27 2021
+
+                     l21 0742                       l40 06EB                       l24 06EF  
+                     l41 06ED                       l26 06F5                       l29 070C  
+                     l38 06E5                      l176 07E9                      l720 0797  
+                    l730 07D1                      l722 07A4                      l732 07D2  
+                    l724 07A8                      l716 0784                      l740 070D  
+                    l734 07DB                      l726 07B1                      l718 0794  
+                    l742 0717                      l750 06FE                      l728 07C3  
+                    l736 07E1                      l752 0702                      l744 06EF  
+                    l754 0708                      l746 06F6                      l770 0743  
+                    l756 06E5                      l748 06F8                      l780 0767  
+                    l772 074B                      l758 06EC                      l782 0770  
+                    l774 0754                      l784 077A                      l776 0758  
+                    l778 0761                      u210 07E1                      u211 07E0  
+                    u220 0726                      u205 07D3                      u150 0794  
+                    u230 06F5                      u151 0793                      u231 06F4  
+                    u240 06FE                      u225 0721                      u241 06FD  
+                    u170 07A8                      u250 0708                      u171 07A7  
+                    u251 0707                      u260 06EB                      u165 0799  
+                    u261 06EA                      u190 07C3                      u191 07C2  
+                    u280 0770                      u185 07AA                      u281 076F  
+                    u195 07BF                      fsr0 0004                      indf 0000  
+                   _RCIF 0065                     _TRMT 04C1                     _TXIF 0064  
+                   _main 0743                     btemp 007E                     start 0000  
+                  ?_main 0070          __end_of___lldiv 07EA                    _RCREG 001A  
+                  _RCSTA 0018                    _SPBRG 0099                    _TRISC 0087  
+                  _TXREG 0019                    _TXSTA 0098       __size_of_UART_Init 0036  
+                  main@a 0027                    main@i 002B                    status 0003  
+                  wtemp0 007E          __initialization 07EA             __end_of_main 0784  
+                 ??_main 0026             ?_UART_RxChar 0070             ?_UART_TxChar 0070  
+      __end_of_UART_Init 0743                ??___lldiv 0078                   main@ch 002A  
+__end_of__initialization 07FC           __pcstackCOMMON 0070             __pidataBANK0 06E2  
+             __pmaintext 0743     __size_of_UART_RxChar 0009     __size_of_UART_TxChar 001F  
+                ___lldiv 0784                  __ptext1 06EE                  __ptext2 06E5  
+                __ptext3 070D                  __ptext4 0784     end_of_initialization 07FC  
+        ___lldiv@divisor 0070          ___lldiv@counter 007D                _UART_Init 070D  
+             ?_UART_Init 0020      start_initialization 07EA              __pdataBANK0 002C  
+              ___latbits 0002            __pcstackBANK0 0020                 ?___lldiv 0070  
+            ??_UART_Init 0022            UART_TxChar@ch 0070            ??_UART_RxChar 0070  
+          ??_UART_TxChar 0070        UART_Init@baudRate 0020      __end_of_UART_RxChar 06EE  
+    __end_of_UART_TxChar 070D         __size_of___lldiv 0066            __size_of_main 0041  
+               main@F860 002C         ___lldiv@dividend 0074              _UART_RxChar 06E5  
+            _UART_TxChar 06EE         ___lldiv@quotient 0079  
