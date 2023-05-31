@@ -1,6 +1,6 @@
 /*
  * File:   newmain.c
- * Author: Mamdouh
+ * Author: Mamdouh Ellamei
  *
  * Created on October 16, 2021, 11:44 AM
  */
